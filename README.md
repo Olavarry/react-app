@@ -1,5 +1,9 @@
 # Creatin a react pp using vite - POC!
 
+React is a library that helps to create user interfaces (UI) for web and mobile interfaces.
+
+> We might need other tools for things like routing, http, form validations, animations, etc...
+
 To create a project using vite send this command in terminal:
 
 - npm crate vite@latest
@@ -10,3 +14,5 @@ To create a project using vite send this command in terminal:
 > extension .tsx is used to create components with typescript with React.
 
 We are going to create components based on functions, example Message.tsx
+
+Bootstrap CSS library will be used for providing styles to our app.
