@@ -1,4 +1,12 @@
-# Creatin a react pp using vite - POC!
+# Creating a react pp using vite - POC!
+
+For running this react app:
+
+- clone this repo
+- npm i
+- npm run dev
+
+> app will be started at server in localhost
 
 React is a library that helps to create user interfaces (UI) for web and mobile interfaces.
 
