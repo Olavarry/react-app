@@ -24,3 +24,19 @@ To create a project using vite send this command in terminal:
 We are going to create components based on functions, example Message.tsx
 
 Bootstrap CSS library will be used for providing styles to our app.
+
+How I implemented unit tests:
+
+installed vitest
+
+> npm install -D vitest
+
+install testing/react library
+
+> npm install @testing-library/react @types/testing-library\_\_react --save-dev
+
+install jest-dom
+
+> npm install --save-dev vitest @testing-library/react @testing-library/jest-dom jsdom
+
+then added config for vite.config.ts file, and created test.test.tsx file
