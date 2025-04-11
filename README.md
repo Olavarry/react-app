@@ -39,4 +39,4 @@ install jest-dom
 
 > npm install --save-dev vitest @testing-library/react @testing-library/jest-dom jsdom
 
-then added config for vite.config.ts file, and created test.test.tsx file
+then added config for vite.config.ts file, and created test.test.tsx file.
