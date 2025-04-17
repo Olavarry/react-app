@@ -5,18 +5,24 @@ import "@testing-library/jest-dom"; // Import jest-dom for matchers like toHaveC
 
 describe("ListGroup Component", () => {
   it("renders the heading", () => {
-    render(<ListGroup items={[]} heading="Test Heading" />);
+    render(
+      <ListGroup items={[]} heading="Test Heading" onSelectItem={() => {}} />
+    );
     expect(screen.getByText("Test Heading")).toBeInTheDocument();
   });
 
   it("renders 'No items found' when items array is empty", () => {
-    render(<ListGroup items={[]} heading="Test Heading" />);
+    render(
+      <ListGroup items={[]} heading="Test Heading" onSelectItem={() => {}} />
+    );
     expect(screen.getByText("No items found")).toBeInTheDocument();
   });
 
   it("renders all list items", () => {
     const items = ["Item 1", "Item 2", "Item 3"];
-    render(<ListGroup items={items} heading="Test Heading" />);
+    render(
+      <ListGroup items={items} heading="Test Heading" onSelectItem={() => {}} />
+    );
     items.forEach((item) => {
       expect(screen.getByText(item)).toBeInTheDocument();
     });
@@ -24,7 +30,9 @@ describe("ListGroup Component", () => {
 
   it("highlights a list item when clicked", () => {
     const items = ["Item 1", "Item 2", "Item 3"];
-    render(<ListGroup items={items} heading="Test Heading" />);
+    render(
+      <ListGroup items={items} heading="Test Heading" onSelectItem={() => {}} />
+    );
 
     const listItem = screen.getByText("Item 2");
     fireEvent.click(listItem);
@@ -35,7 +43,9 @@ describe("ListGroup Component", () => {
 
   it("removes highlight from previously selected item when a new item is clicked", () => {
     const items = ["Item 1", "Item 2", "Item 3"];
-    render(<ListGroup items={items} heading="Test Heading" />);
+    render(
+      <ListGroup items={items} heading="Test Heading" onSelectItem={() => {}} />
+    );
 
     const firstItem = screen.getByText("Item 1");
     const secondItem = screen.getByText("Item 2");
