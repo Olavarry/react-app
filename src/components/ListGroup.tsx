@@ -4,12 +4,25 @@ interface Props {
   items: string[];
   heading: string;
   onSelectItem: (item: string) => void;
+  onInputSubmit: (inputValue: string) => void;
 }
 
-function ListGroup({ items, heading, onSelectItem }: Props) {
+function ListGroup({ items, heading, onSelectItem, onInputSubmit }: Props) {
   const getMessage = () => (items.length === 0 ? <p>No items found</p> : null);
 
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [inputValue, setInputValue] = useState(""); // State for input value
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value); // Update state with input value
+  };
+
+  const handleInputSubmit = () => {
+    if (inputValue.trim() !== "") {
+      onInputSubmit(inputValue); // Pass the input value to the parent component
+      setInputValue(""); // Clear the input field
+    }
+  };
 
   //Event handler
   // const handleClick = (event: MouseEvent) => console.log(event);   this can be added to li  onClick={handleClick}
@@ -36,6 +49,32 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
           </li>
         ))}
       </ul>
+      <br></br>
+      <div className="input-group mb-3">
+        <span className="input-group-text" id="basic-addon1">
+          Ticker symbol
+        </span>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="i.e JPM"
+          aria-label="Ticker"
+          aria-describedby="basic-addon1"
+          value={inputValue} // Bind input value to state
+          onChange={handleInputChange} // Handle input changes
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              handleInputSubmit(); // Trigger submit on Enter key
+            }
+          }}
+        />
+        <button
+          className="btn btn-primary"
+          onClick={handleInputSubmit} // Handle input submission
+        >
+          Search
+        </button>
+      </div>
     </>
 
     //another way to implent this could be:
