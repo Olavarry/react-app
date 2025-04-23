@@ -6,7 +6,12 @@ function App() {
 
   const handleSelectItem = (item: string) => {
     axios
-      .get("https://jsonplaceholder.typicode.com/users?name=" + item)
+      .get("https://financialmodelingprep.com/stable/search-symbol", {
+        params: {
+          query: item,
+          apikey: "awsqzdvlpugFQrdxr6ao1ukzFuborA4k",
+        },
+      })
       .then((response) => {
         console.log(response.data[0]);
       })
@@ -33,13 +38,17 @@ function App() {
 
   //return <div><Message></Message></div>
   return (
-    <div>
-      <ListGroup
-        items={items}
-        heading="Popular Stocks"
-        onSelectItem={handleSelectItem}
-        onInputSubmit={handleInputSubmit}
-      />
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6 offset-md-3">
+          <ListGroup
+            items={items}
+            heading="Popular Stocks"
+            onSelectItem={handleSelectItem}
+            onInputSubmit={handleInputSubmit}
+          />
+        </div>
+      </div>
     </div>
   );
 }
