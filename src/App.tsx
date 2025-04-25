@@ -5,6 +5,7 @@ import axios from "axios";
 function App() {
   let items = ["AAPL", "GOOGL", "TSLA", "AMZN", "MSFT"];
   const [responseData, setResponseData] = useState<string | null>(null); // State to store API response
+  const [responsePayDate, setResponsePayDate] = useState<string | null>(null); // State to store API response
 
   const handleSelectItem = (item: string) => {
     axios
@@ -22,6 +23,25 @@ function App() {
       .catch((error) => {
         console.log(error);
         setResponseData("Error fetching data"); // Handle error
+      });
+
+    axios
+      .get("https://financialmodelingprep.com/stable/dividends", {
+        params: {
+          symbol: item,
+          apikey: import.meta.env.VITE_API_KEY,
+        },
+      })
+      .then((response) => {
+        const paymentDate =
+          response.data[0]?.paymentDate ||
+          "No data found. This company/ETF may not distribute dividends or is a premium symbol (pay subscription to get data)";
+        setResponsePayDate(paymentDate); // Update state with the response
+        console.log(response.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+        setResponsePayDate("Error fetching data"); // Handle error
       });
   };
 
@@ -42,6 +62,24 @@ function App() {
         console.log(error);
         setResponseData("Error fetching data"); // Handle error
       });
+    axios
+      .get("https://financialmodelingprep.com/stable/dividends", {
+        params: {
+          symbol: inputValue,
+          apikey: import.meta.env.VITE_API_KEY,
+        },
+      })
+      .then((response) => {
+        const paymentDate =
+          response.data[0]?.paymentDate ||
+          "No data found. This company/ETF may not distribute dividends or is a premium symbol (pay subscription to get data)";
+        setResponsePayDate(paymentDate); // Update state with the response
+        console.log(response.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+        setResponsePayDate("Error fetching data"); // Handle error
+      });
   };
 
   //return <div><Message></Message></div>
@@ -58,6 +96,9 @@ function App() {
           <div className="mt-3">
             <h5>Full Name:</h5>
             <p>{responseData}</p>
+            <br></br>
+            <h5>Payment date:</h5>
+            <p>{responsePayDate}</p>
           </div>
         </div>
       </div>
