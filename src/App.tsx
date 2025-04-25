@@ -11,7 +11,7 @@ function App() {
       .get("https://financialmodelingprep.com/stable/search-symbol", {
         params: {
           query: item,
-          apikey: "awsqzdvlpugFQrdxr6ao1ukzFuborA4k",
+          apikey: import.meta.env.VITE_API_KEY,
         },
       })
       .then((response) => {
@@ -30,7 +30,7 @@ function App() {
       .get("https://financialmodelingprep.com/stable/search-symbol", {
         params: {
           query: inputValue,
-          apikey: "awsqzdvlpugFQrdxr6ao1ukzFuborA4k",
+          apikey: import.meta.env.VITE_API_KEY,
         },
       })
       .then((response) => {
