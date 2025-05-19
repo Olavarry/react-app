@@ -4,6 +4,8 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   plugins: [react()],
+  base: "/react-app/",
+})
   test: {
     globals: true,
     environment: "jsdom",
