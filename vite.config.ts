@@ -7,7 +7,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    exclude: ['**/node_modules/**', '**/dist/**', '**/cypress/**', '**/Playwright/**', '**/.{idea,git,cache,output,temp}/**', '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*']
+    exclude: ['**/node_modules/**', '**/dist/**', '**/cypress/**', '**/playwright/**', '**/.{idea,git,cache,output,temp}/**', '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*']
     //Above exclude, is to exclude all those folders/files when running the npm run test command to execute unit tests.
   },
 })

@@ -51,12 +51,13 @@ function ListGroup({ items, heading, onSelectItem, onInputSubmit }: Props) {
       </ul>
       <br></br>
       <div className="input-group mb-3">
-        <span className="input-group-text" id="basic-addon1">
+        <span className="input-group-text" id="search-ticker">
           Ticker symbol
         </span>
         <input
           type="text"
           className="form-control"
+          id="inputSearch"
           placeholder="i.e JPM"
           aria-label="Ticker"
           aria-describedby="basic-addon1"

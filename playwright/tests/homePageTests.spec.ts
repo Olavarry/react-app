@@ -1,15 +1,20 @@
 import { test, expect } from '@playwright/test';
+import { HomePage} from '../pages/homePage.ts'
+import { homedir } from 'os';
+
+
 
 test('has title', async ({ page }) => {
-  await page.goto('http://localhost:5173/');
+  const homePage = new HomePage(page);
+  await homePage.goto('http://localhost:5173/');
 
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Stocks App/);
 });
 
-test('get started link', async ({ page }) => {
-  await page.goto('http://localhost:5173/');
-
+test('validate Search', async ({ page }) => {
+  const homePage = new HomePage(page);
+  await homePage.validateSearch();
   // Click the get started link.
   // await page.getByRole('link', { name: 'Get started' }).click();
 

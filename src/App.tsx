@@ -68,7 +68,7 @@ function App() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6 offset-md-3">
+        <div className="col-md-6 offset-md-3" id="header">
           <ListGroup
             items={items}
             heading="Popular Stocks"
@@ -77,14 +77,14 @@ function App() {
           />
           <div className="mt-3">
             <h5>Full Name:</h5>
-            <p>{responseData}</p>
+            <p id="fullName">{responseData}</p>
             <br />
             <h5>Payment date:</h5>
-            <p>{responsePayDate}</p>
+            <p id="paymentDate">{responsePayDate}</p>
           </div>
           {dividendData.length > 0 && ( // Conditionally render the graph
             <div className="mt-5">
-              <h5>Dividend Graph:</h5>
+              <h5 id="graph">Dividend Graph:</h5>
               <DividendGraph dividendData={dividendData} />
             </div>
           )}
